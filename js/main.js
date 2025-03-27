@@ -6,7 +6,6 @@ function datosUsuario() {
     let eleccion;
     let lista = 0;
     let total = 0;
-    let suma = 0;
 
     //array
     const precios = [100, 80, 20];
@@ -73,10 +72,28 @@ function formaPago(total) {
             alert(`Ingreso invalido, Por favor ingrese una opcion para abonar su compra`);
             return;
     }
-    
     alert(`El total de tu compra es de $${totalAPagar}`)
+    return totalCompra
+
 }
 let totalCompra = datosUsuario();
 if (totalCompra !== null) {
-formaPago(totalCompra);
+totalCompra = formaPago(totalCompra);
 }
+
+function propina(totalCompra) { 
+    let dejaPropina = confirm(`¿Desea usted agregar una propina?`);
+
+        if (dejaPropina) {
+            let propinaUser = parseInt(prompt(`Ingrese el monto de la propina`));
+                if (!isNaN(propinaUser)){
+                alert(`El monto total es de $${totalCompra + propinaUser}`)
+                }
+                else {
+                alert(`ingreso no valido. El monto total sigue siendo de $${totalCompra}`);
+                }
+        } else {
+            alert(`el monto total es es de $${totalCompra}`)
+        }
+}
+    propina(totalCompra)
